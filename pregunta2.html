@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>pregunta2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+
+<body>
+    
+    <div class="container py-3">
+        <div class="row row-cols-1 row-cols-md-1 mb-1 text-center ">
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">DATOS DE USUARIO</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="pregunta2.php" method="POST" onsubmit="return validarFormulario()">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label" >Nombre y Apellido:</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del Usuario" required >
+                            </div>
+                            <div class="mb-3">
+                                <label for="direccion" class="form-label">Dirección:</label>
+                                <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direccion del usuario" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electronico" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="edad" class="form-label">Edad:</label>
+                                <input type="int" class="form-control" id="edad" name="edad"  placeholder="18" required>
+                                <div id="mensaje-edad" class="form-text text-danger d-none">Por favor, ingrese una edad válida (mayor de
+                                    18 años).</div>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                <button type="reset" class="btn btn-secondary">Limpiar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <script>
+        function validarFormulario() {
+            var edad = parseInt(document.getElementById('edad').value);
+            if (isNaN(edad) || edad < 18) {
+                document.getElementById('mensaje-edad').classList.remove('d-none');
+                alert('Solo se admiten usuarios mayores de edad');
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</body>
+
+</html>
